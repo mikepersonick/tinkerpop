@@ -158,6 +158,18 @@ public class PTest {
                     {TextP.containing("o").and(P.gte("j")).and(TextP.endingWith("ko")), "josh", false},
                     {TextP.containing("o").and(P.gte("j").and(TextP.endingWith("ko"))), "marko", true},
                     {TextP.containing("o").and(P.gte("j").and(TextP.endingWith("ko"))), "josh", false},
+                    {TextP.regex("^D"), "Dallas Fort Worth", true},
+                    {TextP.regex("^d"), "Dallas Fort Worth", false},
+                    {TextP.regex("^Da"), "Dallas Forth Worth", true},
+                    {TextP.regex("^da"), "Dallas Forth Worth", false},
+                    {TextP.regex("^x"), "Dallas Fort Worth", false},
+                    {TextP.regex("Dal[l|x]as"), "Dallas Fort Worth", true},
+                    {TextP.regex("Dal[f|x]as"), "Dallas Fort Worth", false},
+                    {TextP.regex("[1-9]{3}"), "123-ABC-456", true},
+                    {TextP.regex("[1-9]{3}-[A-Z]{3}-[1-9]{3}"), "123-ABC-456", true},
+                    {TextP.regex("[1-9]{3}-[a-z]{3}-[1-9]{3}"), "123-ABC-456", false},
+                    {TextP.regex("(?i)[1-9]{3}-[a-z]{3}-[1-9]{3}"), "123-ABC-456", true},
+                    {TextP.regex("(?i)abc"), "123-ABC-456", true},
             }));
         }
 

@@ -39,7 +39,7 @@ public enum Text implements BiPredicate<String, String> {
     regex {
         @Override
         public boolean test(final String value, final String regex) {
-            Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+            Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(value);
             return matcher.find();   
         }
@@ -60,7 +60,7 @@ public enum Text implements BiPredicate<String, String> {
     notRegex {
         @Override
         public boolean test(final String value, final String regex) {
-	    Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+	    Pattern pattern = Pattern.compile(regex);
 	    Matcher matcher = pattern.matcher(value);
 	    return !matcher.find();   
         }
