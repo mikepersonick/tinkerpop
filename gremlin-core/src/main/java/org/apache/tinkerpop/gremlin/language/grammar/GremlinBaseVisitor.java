@@ -1027,6 +1027,16 @@ public class GremlinBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	public T visitTraversalPredicate_notEndingWith(final GremlinParser.TraversalPredicate_notEndingWithContext ctx) {
 		notImplemented(ctx); return null;
 	}
+
+	@Override
+	public T visitTraversalPredicate_regex(final GremlinParser.TraversalPredicate_regexContext ctx) {
+		notImplemented(ctx); return null;
+	}
+
+	@Override
+	public T visitTraversalPredicate_notRegex(final GremlinParser.TraversalPredicate_notRegexContext ctx) {
+		notImplemented(ctx); return null;
+	}
 	/**
 	 * {@inheritDoc}
 	 */
