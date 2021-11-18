@@ -301,7 +301,7 @@ namespace Gremlin.Net.IntegrationTest.Driver
                     await gremlinClient.SubmitAsync<int>("x");
                     Assert.True(false, "The 'x' variable should not exist after session close");
                 }
-                catch (Exception ignored)
+                catch (Exception)
                 {
                     // do nothing
                 }
