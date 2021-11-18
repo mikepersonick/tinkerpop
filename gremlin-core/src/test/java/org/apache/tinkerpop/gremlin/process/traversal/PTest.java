@@ -165,11 +165,13 @@ public class PTest {
                     {TextP.regex("^x"), "Dallas Fort Worth", false},
                     {TextP.regex("Dal[l|x]as"), "Dallas Fort Worth", true},
                     {TextP.regex("Dal[f|x]as"), "Dallas Fort Worth", false},
+                    {TextP.regex("[a-zA-Z]+ Fort"), "Dallas Fort Worth", true},
                     {TextP.regex("[1-9]{3}"), "123-ABC-456", true},
                     {TextP.regex("[1-9]{3}-[A-Z]{3}-[1-9]{3}"), "123-ABC-456", true},
                     {TextP.regex("[1-9]{3}-[a-z]{3}-[1-9]{3}"), "123-ABC-456", false},
                     {TextP.regex("(?i)[1-9]{3}-[a-z]{3}-[1-9]{3}"), "123-ABC-456", true},
                     {TextP.regex("(?i)abc"), "123-ABC-456", true},
+                    {TextP.regex("(?i)[a-b]{3}-[1-9]{3}-[a-z]{3}"), "123-ABC-456", false},
             }));
         }
 
