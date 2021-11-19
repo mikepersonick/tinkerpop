@@ -384,6 +384,14 @@ class TextP(P):
     def startingWith(*args):
         return TextP("startingWith", *args)
 
+    @staticmethod
+    def regex(*args):
+        return TextP("regex", *args)
+
+    @staticmethod
+    def notRegex(*args):
+        return TextP("notRegex", *args)
+
     def __eq__(self, other):
         return isinstance(other, self.__class__) and self.operator == other.operator and self.value == other.value and self.other == other.other
 
