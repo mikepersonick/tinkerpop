@@ -721,7 +721,7 @@ Feature: Step - has()
       | v[ripple] |
       | v[peter] |
 
- Scenario: g_V_hasXname_regexX^MarXX
+ Scenario: g_V_hasXname_regexXrMarXX
     Given the modern graph
     And the traversal of
       """
@@ -732,7 +732,7 @@ Feature: Step - has()
       | result |
       | v[marko] |
 
- Scenario: g_V_hasXname_notRegexX^MarXX
+ Scenario: g_V_hasXname_notRegexXrMarXX
     Given the modern graph
     And the traversal of
       """
