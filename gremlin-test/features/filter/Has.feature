@@ -721,6 +721,33 @@ Feature: Step - has()
       | v[ripple] |
       | v[peter] |
 
+ Scenario: g_V_hasXname_regexX^MarXX
+    Given the modern graph
+    And the traversal of
+      """
+      g.V().has("name", TextP.regex("^mar"))
+      """
+    When iterated to list
+    Then the result should be unordered
+      | result |
+      | v[marko] |
+
+ Scenario: g_V_hasXname_notRegexX^MarXX
+    Given the modern graph
+    And the traversal of
+      """
+      g.V().has("name", TextP.notRegex("^mar"))
+      """
+    When iterated to list
+    Then the result should be unordered
+      | result |
+      | v[josh] |
+      | v[vadas] |
+      | v[lop] |
+      | v[ripple] |
+      | v[peter] |  
+
+
   Scenario: g_V_hasXp_neqXvXX
     Given the modern graph
     And the traversal of
@@ -951,3 +978,4 @@ Feature: Step - has()
     Then the result should be unordered
       | result |
       | josh |
+
