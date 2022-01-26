@@ -57,6 +57,9 @@ namespace Gremlin.Net.IntegrationTest.Gherkin
             new Dictionary<string, Func<string, string, object>>
             {
                 {@"vp\[(.+)\]", ToVertexProperty},
+                {@"d\[(NaN)\]", (_, __) => Double.NaN},
+                {@"d\[(Infinity)\]", (_, __) => Double.PositiveInfinity},
+                {@"d\[(-Infinity)\]", (_, __) => Double.NegativeInfinity},
                 {@"d\[(.*)\]\.([bsilfdmn])", ToNumber},
                 {@"D\[(.+)\]", ToDirection},
                 {@"v\[(.+)\]", ToVertex},

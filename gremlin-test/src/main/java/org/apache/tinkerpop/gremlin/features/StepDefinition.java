@@ -55,6 +55,7 @@ import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.core.Every.everyItem;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
@@ -98,6 +99,9 @@ public final class StepDefinition {
             final String listItems = Stream.of(items).map(String::trim).map(x -> convertToString(x)).collect(Collectors.joining(","));
             return String.format("[%s]", listItems);
         }));
+        add(Pair.with(Pattern.compile("d\\[(NaN)\\]"), s -> "NaN"));
+        add(Pair.with(Pattern.compile("d\\[(Infinity)\\]"), s -> "Infinity"));
+        add(Pair.with(Pattern.compile("d\\[(-Infinity)\\]"), s -> "-Infinity"));
         add(Pair.with(Pattern.compile("d\\[(.*)\\]\\.b"), s -> s + "b"));
         add(Pair.with(Pattern.compile("d\\[(.*)\\]\\.s"), s -> s + "s"));
         add(Pair.with(Pattern.compile("d\\[(.*)\\]\\.i"), s -> s + "i"));
@@ -172,6 +176,9 @@ public final class StepDefinition {
             throw new AssumptionViolatedException("This test uses a Path as a parameter which is not supported by gremlin-language");
         }));
 
+        add(Pair.with(Pattern.compile("d\\[(NaN)\\]"), s -> Double.NaN));
+        add(Pair.with(Pattern.compile("d\\[(Infinity)\\]"), s -> Double.POSITIVE_INFINITY));
+        add(Pair.with(Pattern.compile("d\\[(-Infinity)\\]"), s -> Double.NEGATIVE_INFINITY));
         add(Pair.with(Pattern.compile("d\\[(.*)\\]\\.b"), Byte::parseByte));
         add(Pair.with(Pattern.compile("d\\[(.*)\\]\\.s"), Short::parseShort));
         add(Pair.with(Pattern.compile("d\\[(.*)\\]\\.i"), Integer::parseInt));
